@@ -48,6 +48,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 ### Docs and resources
 - [AWS Kinesis streaming mpeg-dash](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/dash-playback.html)
+- [Streaming video from S3, CloudFront and React](https://www.youtube.com/watch?v=WP7Dpvrl8Ic)
 
 ## Development server
 
