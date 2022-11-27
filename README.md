@@ -1,6 +1,9 @@
 
+<div align="center">  
+  <img src="https://user-images.githubusercontent.com/65465380/204162512-739f028b-24a4-4ec5-b40e-afe7608d8f0e.png" width="750">
+</div>
 
-# Onvu video streaming project
+# Portfolio Project
 
 - [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Firebase, Pubsub, Firestore, workflows
 - [Vitejs](https://vitejs.dev/) for React, Cypress, Vitest, Storybook
@@ -13,7 +16,11 @@
 - [Framer Motion](https://www.framer.com/motion/) Animation library for react
 - [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<br>
+
+<hr>
+
+<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="250"></p>
 
 🔎 **Smart, Fast and Extensible Build System**
 
