@@ -6,7 +6,6 @@
 # Chosen technologies
 
 - [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Lambda, S3, Step Functions, Kenises and Dynamodb
-- [Vitejs](https://vitejs.dev/) for React, Cypress, Vitest, Storybook
 - [Nextjs](https://nextjs.org/) - Web client 
 - [Jotai](https://jotai.org/) Atomic state management
 - [React Query](https://react-query-v3.tanstack.com/) (with jotai integration)
