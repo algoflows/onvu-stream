@@ -1,8 +1,8 @@
 
 
-# OPSAP
+# Onvu video streaming project
 
-- [Google Cloud Platform](https://cloud.google.com/) - Firebase, Pubsub, Firestore, workflows
+- [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Firebase, Pubsub, Firestore, workflows
 - [Terraform](https://www.terraform.io/) to provision everything (Prisma, Contentful, GCP, Stripe and Cockroach)
 - [Prisma](https://www.prisma.io/) Typescript ORM
 - [CockroachDB](https://www.cockroachlabs.com/) - ACID consistency for payments, inventory and signing.
