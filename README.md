@@ -15,6 +15,7 @@
 - [Framer Motion](https://www.framer.com/motion/) Animation library for react
 - [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
 - [Dashjs](http://reference.dashif.org/dash.js/v4.5.1/samples/dash-if-reference-player/index.html) Media playing client
+- [Google Shaka Player](https://github.com/shaka-project/shaka-player) MPEG-DASH player by Google
 
 # Breif
 
