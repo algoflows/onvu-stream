@@ -15,7 +15,7 @@
 - [Cypress](https://www.cypress.io/) Visual testing framework
 - [Framer Motion](https://www.framer.com/motion/) Animation library for react
 - [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
-- [Dashjs Media Client](
+- [Dashjs](http://reference.dashif.org/dash.js/v4.5.1/samples/dash-if-reference-player/index.html) Media playing client
 
 # Breif
 
