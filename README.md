@@ -3,21 +3,15 @@
 # Onvu video streaming project
 
 - [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Firebase, Pubsub, Firestore, workflows
-- [Terraform](https://www.terraform.io/) to provision everything (Prisma, Contentful, GCP, Stripe and Cockroach)
-- [Prisma](https://www.prisma.io/) Typescript ORM
-- [CockroachDB](https://www.cockroachlabs.com/) - ACID consistency for payments, inventory and signing.
-- [Capacitor](https://capacitorjs.com/) - Native Mobile compilation
-- [Appflow](https://ionic.io/appflow) - Deployment of Capictor apps
-- [Brainstree](https://graphql.braintreepayments.com/) - Payments processing has grapqhl endpointas
 - [Vitejs](https://vitejs.dev/) for React, Cypress, Vitest, Storybook
 - [Nextjs](https://nextjs.org/) - Web client 
 - [Jotai](https://jotai.org/) Atomic state management
 - [React Query](https://react-query-v3.tanstack.com/) (with jotai integration)
 - [Tailwind](https://tailwindcss.com/) shared UI library
 - [NX.dev](https://nx.dev/) monorepo workspace
-- [Vitest](https://vitest.dev/) Super fast javascript testing lib 
 - [Cypress](https://www.cypress.io/) Visual testing framework
 - [Framer Motion](https://www.framer.com/motion/) Animation library for react
+- [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
 
 ### NX Links
 
