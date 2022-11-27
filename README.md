@@ -51,6 +51,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [Streaming video from S3, CloudFront and React](https://www.youtube.com/watch?v=WP7Dpvrl8Ic)
 - [KVS ingestion from RTSP cameras a Kinesis Video Streams tutorial](https://www.youtube.com/watch?v=nVxwX7Q9nPU)
 - [Build a Real Time Data Streaming System with AWS Kinesis, Lambda Functions and a S3 Bucket](https://www.youtube.com/watch?v=We5Jr4GGLL0)
+- [How to Build a File Upload System on AWS with React and a Serverless API | Lambda, S3, API Gateway](https://www.youtube.com/watch?v=IgAE-ycnb94)
 
 ## Development server
 
