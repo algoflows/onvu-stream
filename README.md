@@ -46,9 +46,10 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Authentication using Cognito
 - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
 
-### Docs and resources
+### Research, docs and resources
 - [AWS Kinesis streaming mpeg-dash](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/dash-playback.html)
 - [Streaming video from S3, CloudFront and React](https://www.youtube.com/watch?v=WP7Dpvrl8Ic)
+- [KVS ingestion from RTSP cameras a Kinesis Video Streams tutorial](https://www.youtube.com/watch?v=nVxwX7Q9nPU)
 
 ## Development server
 
