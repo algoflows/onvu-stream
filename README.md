@@ -5,7 +5,7 @@
 
 # Chosen technologies
 
-- [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Firebase, Pubsub, Firestore, workflows
+- [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Lambda, S3, Step Functions, Kenises and Dynamodb
 - [Vitejs](https://vitejs.dev/) for React, Cypress, Vitest, Storybook
 - [Nextjs](https://nextjs.org/) - Web client 
 - [Jotai](https://jotai.org/) Atomic state management
@@ -33,8 +33,11 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Start Step function flow for upload email confirmation, compression and metadata extract
 
 ### Frontend
-- [ ] Tailwind ui lib for basic navigation and site components
 - [ ] Nextjs frontend deployed to vercel
+- [ ] Tailwind ui lib for basic navigation and site components
+- [ ] Top navigation with upload page and video lists page
+- [ ] Video upload component
+- [ ] Search box for video listings filtering
 
 ### Stretch Goals
 - Authentication using Cognito
