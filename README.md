@@ -3,7 +3,7 @@
   <img src="https://user-images.githubusercontent.com/65465380/204162512-739f028b-24a4-4ec5-b40e-afe7608d8f0e.png" width="750">
 </div>
 
-# Chosen technologies
+# Stack
 
 - [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Lambda, S3, Step Functions, Kenises and Dynamodb
 - [Nextjs](https://nextjs.org/) - Web client 
