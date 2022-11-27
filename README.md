@@ -36,7 +36,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Tailwind ui lib for basic navigation and site components
 - [ ] Nextjs frontend deployed to vercel
 
-# Stretch Goals
+### Stretch Goals
 - Authentication using Cognito
 - AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
 
