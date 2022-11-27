@@ -3,7 +3,7 @@
   <img src="https://user-images.githubusercontent.com/65465380/204162512-739f028b-24a4-4ec5-b40e-afe7608d8f0e.png" width="750">
 </div>
 
-# Portfolio Project
+# Chosen technologies
 
 - [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Firebase, Pubsub, Firestore, workflows
 - [Vitejs](https://vitejs.dev/) for React, Cypress, Vitest, Storybook
@@ -18,7 +18,29 @@
 
 <br>
 
-🔎 **Smart, Fast and Extensible Build System**
+# Backstory
+
+A requirement has been issued from the product team to improve the quality of the on demand video playback service from our cloud platform on low bandwidth links. It has been proposed that we can use MPEG Dash.
+
+# Requirements
+
+Design a simple web application that plays a video delivered by MPEG-Dash. It should store metadata about the video in the backend which is exposed by an API. Support your design with sample code and documentation. 
+
+### Backend
+- [ ] Provision S3 storage bucket for video storage
+- [ ] Provision S3 storage bucket for thumbnails
+- [ ] Provision dynamodb table to store 
+- [ ] Create lambda to returned signed url for for video upload
+- [ ] Create S3 event trigger on new item upload to S3 bucket
+- [ ] Start Step function flow for upload email confirmation, compression and metadata extract
+
+### Frontend
+- [ ] Tailwind ui lib for basic navigation and site components
+- [ ] Nextjs frontend deployed to vercel
+
+# Stretch Goals
+- Authentication using Cognito
+- AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
 
 ## Development server
 
