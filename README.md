@@ -13,24 +13,13 @@
 - [Framer Motion](https://www.framer.com/motion/) Animation library for react
 - [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
 
-### NX Links
-
-- [Nrwl-Tailwind setting up tailwind the easy way](https://nx.dev/recipe/using-tailwind-css-in-react)
-- [Nrwl-Storybook](https://nx.dev/packages/storybook)
-- [Nrwl-Capacitor](https://nxtend.dev/docs/capacitor/overview)
-- [Use storybook and tailwind in an Nx Workspace](https://blog.nrwl.io/use-storybook-with-tailwind-in-an-nx-workspace-5ceb08edad71)
-- [Speed up Storybook with Vite and SWC — with the help of Nx](https://blog.nrwl.io/speed-up-storybook-with-vite-and-swc-with-the-help-of-nx-b1e4c488e0fd)
-- [Storybook Vite](https://storybook.js.org/blog/storybook-for-vite/)
-- [Storybook Vitest](https://storybook.js.org/addons/storybook_vitest_addon)
-
-
-This project was generated using [Nx](https://nx.dev).
-
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
 🔎 **Smart, Fast and Extensible Build System**
 
 ## Adding capabilities to your workspace
+
+[Nx](https://nx.dev).
 
 Nx supports many plugins which add capabilities for developing different types of applications and different tools.
 
