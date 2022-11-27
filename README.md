@@ -15,6 +15,7 @@
 - [Cypress](https://www.cypress.io/) Visual testing framework
 - [Framer Motion](https://www.framer.com/motion/) Animation library for react
 - [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
+- [Dashjs Media Client](
 
 # Breif
 
@@ -26,9 +27,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 ### Backend
 - [ ] Provision S3 storage bucket for video storage
-- [ ] Provision S3 storage bucket for thumbnails
-- [ ] Provision dynamodb table to store 
-- [ ] Create lambda to returned signed url for for video upload
+- [ ] Provision dynamodb table to store video metadata
 - [ ] Create S3 event trigger on new item upload to S3 bucket
 - [ ] Start Step function flow for upload email confirmation, compression and metadata extract
 
@@ -36,10 +35,13 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Nextjs frontend deployed to vercel
 - [ ] Tailwind ui lib for basic navigation and site components
 - [ ] Top navigation with upload page and video lists page
-- [ ] Video upload component
 - [ ] Search box for video listings filtering
+- [ ] Dash video player client
 
 ### Stretch Goals
+- [ ] Create lambda to returned signed url for for video upload
+- [ ] Provision S3 storage bucket for thumbnails
+- [ ] Video upload component
 - [ ] Authentication using Cognito
 - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
 
