@@ -16,6 +16,7 @@
 - [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
 - [Dashjs](http://reference.dashif.org/dash.js/v4.5.1/samples/dash-if-reference-player/index.html) Media playing client
 - [Google Shaka Player](https://github.com/shaka-project/shaka-player) MPEG-DASH player by Google
+- [Shaka Player React](https://github.com/matvp91/shaka-player-react)
 
 # Breif
 
@@ -44,6 +45,9 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Video upload component
 - [ ] Authentication using Cognito
 - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
+
+### Docs and resources
+- [AWS Kinesis streaming mpeg-dash](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/dash-playback.html)
 
 ## Development server
 
