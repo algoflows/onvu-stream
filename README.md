@@ -16,9 +16,7 @@
 - [Framer Motion](https://www.framer.com/motion/) Animation library for react
 - [CloudCraft](https://www.cloudcraft.co/) Visualise your AWS cloud environment
 
-<br>
-
-# Backstory
+# Breif
 
 A requirement has been issued from the product team to improve the quality of the on demand video playback service from our cloud platform on low bandwidth links. It has been proposed that we can use MPEG Dash.
 
