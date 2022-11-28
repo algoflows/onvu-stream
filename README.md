@@ -50,7 +50,18 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 | PK (videoId)|  SK              | length | type    | bucket    | coverImg | transcription |
 | :-----:     | :--------------: | :-----:| :-----: | :-------: | :-------:| :---------:   |
-| 208439      | userId#createdAt | 4:20   | mpeg    | http://...| http//...| fjlkajdjljfl |
+| 208439      | userId#createdAt | 4:20   | mpeg    | http://...| http//...| fjlkajdjljfl  |
+
+### CICD
+
+- Github Actions deployemnt
+- NX Cloud build caching
+
+### QA Testing
+
+- Cypress
+- Jest
+- Sonar Lint
 
 ### Research, docs and resources
 - [AWS Kinesis streaming mpeg-dash](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/dash-playback.html)
