@@ -38,7 +38,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 ### Platform
 - [ ] Provision dynamodb table to store video metadata
-- [ ] Provision Lambda to store video metadata in dynamodb table
+- [ ] Provision Lambda to store video metadata and mpd reference url in dynamodb table
 - [ ] Provision lambda to get all videos
 - [ ] Provision lambda to get single video ref
 
