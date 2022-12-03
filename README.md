@@ -41,6 +41,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Provision Lambda to store video metadata and mpd reference url in dynamodb table
 - [ ] Provision lambda to get all videos
 - [ ] Provision lambda to get single video ref
+- [ ] Setup AWS env accounts (prod account, dev account, temp test account)
 
 ### Frontend
 - [x] Scaffold Nextjs app
