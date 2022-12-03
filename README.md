@@ -24,7 +24,10 @@ A requirement has been issued from the product team to improve the quality of th
 
 # Reqs
 
-Design a simple web application that plays a video delivered by MPEG-Dash. It should store metadata about the video in the backend which is exposed by an API. Support your design with sample code and documentation. 
+Design a simple web application that plays a video delivered by MPEG-Dash. It should store metadata about the video in the backend which is exposed by an API. Support your design with sample code and documentation.
+
+# Architecture
+![onvu-upload-flow](https://user-images.githubusercontent.com/65465380/205446658-0a495777-5978-49cf-a389-f9602ae6e2a8.png)
 
 ### Platform
 - [ ] Provision S3 storage bucket for video storage
@@ -45,11 +48,6 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Video upload component
 - [ ] Authentication using Cognito
 - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
-
-<br>
-
-## Architecture
-![onvu-upload-flow](https://user-images.githubusercontent.com/65465380/205446658-0a495777-5978-49cf-a389-f9602ae6e2a8.png)
 
 ### Data design
 
