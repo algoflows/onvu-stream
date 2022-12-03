@@ -1,6 +1,6 @@
 
 <div align="center">  
-  <img src="https://user-images.githubusercontent.com/65465380/204162512-739f028b-24a4-4ec5-b40e-afe7608d8f0e.png" width="750">
+  <img src="https://user-images.githubusercontent.com/65465380/204162512-739f028b-24a4-4ec5-b40e-afe7608d8f0e.png" width="650">
 </div>
 
 # Stack
@@ -19,7 +19,9 @@
 - [Shaka Player React](https://github.com/matvp91/shaka-player-react)
 
 # AWS Architecture
-![onvu-upload-flow](https://user-images.githubusercontent.com/65465380/205446658-0a495777-5978-49cf-a389-f9602ae6e2a8.png)
+<div align="center">  
+  <img src="https://user-images.githubusercontent.com/65465380/205446658-0a495777-5978-49cf-a389-f9602ae6e2a8.png" width="650">
+</div>
 
 # Breif
 
