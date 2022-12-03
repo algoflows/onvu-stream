@@ -49,7 +49,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Authentication using Cognito
 - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
 
-### Data design
+### Data (Dynamodb)
 
 | PK (videoId)|  SK              | length | type    | inputBucket| outputBucketMpd | coverImg | transcription |
 | :-----:     | :--------------: | :-----:| :-----: | :-------:  | :------------:  | :-------:| :---------:   |
