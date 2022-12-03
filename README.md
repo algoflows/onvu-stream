@@ -18,6 +18,9 @@
 - [Google Shaka Player](https://github.com/shaka-project/shaka-player) MPEG-DASH player by Google
 - [Shaka Player React](https://github.com/matvp91/shaka-player-react)
 
+# Architecture
+![onvu-upload-flow](https://user-images.githubusercontent.com/65465380/205446658-0a495777-5978-49cf-a389-f9602ae6e2a8.png)
+
 # Breif
 
 A requirement has been issued from the product team to improve the quality of the on demand video playback service from our cloud platform on low bandwidth links. It has been proposed that we can use MPEG Dash.
@@ -25,9 +28,6 @@ A requirement has been issued from the product team to improve the quality of th
 # Reqs
 
 Design a simple web application that plays a video delivered by MPEG-Dash. It should store metadata about the video in the backend which is exposed by an API. Support your design with sample code and documentation.
-
-# Architecture
-![onvu-upload-flow](https://user-images.githubusercontent.com/65465380/205446658-0a495777-5978-49cf-a389-f9602ae6e2a8.png)
 
 ### Platform
 - [ ] Provision S3 storage bucket for video storage
