@@ -18,6 +18,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
+    "shaka-player-react": "^1.1.5",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -32,6 +33,7 @@
     "@nrwl/nx-cloud": "15.0.2",
     "@nrwl/react": "15.3.0-beta.12",
     "@nrwl/storybook": "15.3.0-beta.12",
+    "@nrwl/vite": "15.3.0-beta.12",
     "@nrwl/web": "15.3.0-beta.12",
     "@nrwl/workspace": "15.3.0-beta.12",
     "@storybook/addon-essentials": "~6.5.9",
@@ -48,6 +50,8 @@
     "@types/react-dom": "18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
+    "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.9.3",
     "autoprefixer": "10.4.13",
     "babel-jest": "28.1.1",
     "babel-loader": "8.1.0",
@@ -62,6 +66,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "jsdom": "~20.0.3",
     "nx": "15.3.0-beta.12",
     "postcss": "8.4.19",
     "prettier": "^2.6.2",
@@ -72,6 +77,10 @@
     "ts-node": "10.9.1",
     "typescript": "~4.8.2",
     "url-loader": "^3.0.0",
-    "vite": "^3.1.4"
+    "vite": "^3.0.5",
+    "vite-plugin-dts": "~1.7.1",
+    "vite-plugin-eslint": "^1.6.0",
+    "vite-tsconfig-paths": "^3.5.2",
+    "vitest": "^0.25.1"
   }
 }

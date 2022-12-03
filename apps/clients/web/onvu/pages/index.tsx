@@ -1,15 +1,21 @@
-import {TopicButton} from '@onvu/shared/ui'
+import { CardPlayer } from '@onvu/shared/ui';
+import { useGetVideos } from '@onvu/shared/hooks';
+import { homeFeedResponse } from '../mocks/home-feed-response';
 
 export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.css file.
-   */
+  const { videos, error, loading } = useGetVideos({ mocks: homeFeedResponse });
+  console.log(videos);
   return (
-   <div>
-     <h2>Lets chat</h2>
-   </div>
+    <div className="flex w-full min-h-full justify-center">
+      {loading && <h1>Loading...</h1>}
+      <div className="flex-col min-h-full">
+        {videos.map((video) => (
+          <div key={video.id} className="mt-12">
+            <CardPlayer {...video} />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
