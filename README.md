@@ -38,9 +38,13 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 ### Platform
 - [ ] Provision dynamodb table to store video metadata
-- [ ] Provision Lambda to store video metadata and mpd reference url in dynamodb table
-- [ ] Provision lambda to get all videos
-- [ ] Provision lambda to get single video ref
+- [ ] Provision POST Lambda to store video metadata and mpd reference url in dynamodb table
+  - [ ] Use mediainfo.js to extract mp4 metadata
+- [ ] Provision GET lambda to get all videos
+- [ ] Provision GET lambda to get single video ref
+- [ ] Create lambda to returned signed url for for video upload
+- [ ] Video upload using aws presigned url
+- [ ] Provision S3 storage bucket for video storage
 - [ ] Setup AWS env accounts (prod account, dev account, temp test account)
 
 ### Frontend
@@ -90,9 +94,6 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 ### Stretch Goals
 - Platform
-  - [ ] Create lambda to returned signed url for for video upload
-  - [ ] Video upload using aws presigned url
-  - [ ] Provision S3 storage bucket for video storage
   - [ ] Provision S3 storage bucket for thumbnails
   - [ ] AWS Media Converter Elements job creation DASH-ISO
   - [ ] Step functions sequential flow/job
