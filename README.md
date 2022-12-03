@@ -39,9 +39,10 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 ### Platform
 - [ ] Provision S3 storage bucket for video storage
 - [ ] Provision dynamodb table to store video metadata
-- [ ] Create S3 event trigger on new item upload to S3 bucket
 - [ ] Create lambda to returned signed url for for video upload
-- [ ] Start Step function flow for upload email confirmation, compression and metadata extract
+- [ ] Video upload using aws presigned url
+- [ ] Lambda store video metadata user generated metadata dynamodb table
+- [ ] S3 event trigger successful upload to s3
 
 ### Frontend
 - [x] Scaffold Nextjs app
@@ -75,7 +76,8 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 ### Stretch Goals
 - [ ] Search box for video listings filtering
 - [ ] Provision S3 storage bucket for thumbnails
-- [ ] Video upload component
+- [ ] AWS Media Converter Elements job creation DASH-ISO
+- [ ] Step functions sequential flow/job
 - [ ] Authentication using Cognito
 - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
 
