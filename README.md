@@ -40,17 +40,35 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Provision S3 storage bucket for video storage
 - [ ] Provision dynamodb table to store video metadata
 - [ ] Create S3 event trigger on new item upload to S3 bucket
+- [ ] Create lambda to returned signed url for for video upload
 - [ ] Start Step function flow for upload email confirmation, compression and metadata extract
 
 ### Frontend
 - [ ] Nextjs frontend deployed to vercel
 - [ ] Tailwind ui lib for basic navigation and site components
-- [ ] Top navigation with upload page and video lists page
-- [ ] Search box for video listings filtering
+- [ ] Screens/Pages
+  - [ ] Home
+  - [ ] Videos
+  - [ ] Player
+  - [ ] Upload
+  - [ ] About (3d render of archicture and flow diagrams)
 - [ ] Dash video player client
+- [ ] Shared ui
+  - [ ] loading spinner component
+  - [ ] card component
+  - [ ] upload box component
+- [ ] shared
+  - [ ] mocks
+  - [ ] types
+
+### Documentation
+- [ ] Readme
+- [ ] Upload flow diagram
+- [ ] Full Architecture diagram
+  
 
 ### Stretch Goals
-- [ ] Create lambda to returned signed url for for video upload
+- [ ] Search box for video listings filtering
 - [ ] Provision S3 storage bucket for thumbnails
 - [ ] Video upload component
 - [ ] Authentication using Cognito
