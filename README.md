@@ -44,7 +44,10 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Provision GET lambda to get single video ref
 - [ ] Create lambda to returned signed url for for video upload
 - [ ] Video upload using aws presigned url
-- [ ] Provision S3 storage bucket for video storage
+- Provision S3 storage bucket for video and asset storage (AWS VideoTranscoder solution)
+  - [ ] S3 input bucket (new uploads, mp4)
+  - [ ] S3 ouput bucket (after transcoding into mp4 dash)
+  - [ ] S3 thumnail bucket
 - [ ] Setup AWS env accounts (prod account, dev account, temp test account)
 
 ### Frontend
@@ -52,14 +55,14 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [x] Setup tailwind
 - [x] Setup routing and navigation pages
 - Screens/Pages
-  - [ ] Home
-  - [ ] Videos
+  - [x] Home
   - [ ] Player
   - [ ] Upload
-  - [ ] About (3d render of archicture and flow diagrams)
+  - [ ] About (3d render of archicture and flow diagrams, iframe)
 - Components
   - [ ] Dash video player client
   - [x] RootLayout component
+  - [ ] limit file upload size (300mb)
 
 
 ### Libs
