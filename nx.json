@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "opsap",
+  "npmScope": "onvu",
   "affected": {
     "defaultBase": "main"
   },
@@ -63,5 +63,5 @@
       }
     }
   },
-  "defaultProject": "next-web"
+  "defaultProject": "clients-web"
 }

@@ -1,11 +1,10 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 
-import Index from '../pages/index';
+import Videos from './index';
 
-describe('Index', () => {
+describe('Upload', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Index />);
+    const { baseElement } = render(<Videos />);
     expect(baseElement).toBeTruthy();
   });
 });
