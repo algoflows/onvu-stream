@@ -37,12 +37,10 @@ A requirement has been issued from the product team to improve the quality of th
 Design a simple web application that plays a video delivered by MPEG-Dash. It should store metadata about the video in the backend which is exposed by an API. Support your design with sample code and documentation.
 
 ### Platform
-- [ ] Provision S3 storage bucket for video storage
 - [ ] Provision dynamodb table to store video metadata
-- [ ] Create lambda to returned signed url for for video upload
-- [ ] Video upload using aws presigned url
-- [ ] Lambda store video metadata user generated metadata dynamodb table
-- [ ] S3 event trigger successful upload to s3
+- [ ] Provision Lambda to store video metadata in dynamodb table
+- [ ] Provision lambda to get all videos
+- [ ] Provision lambda to get single video ref
 
 ### Frontend
 - [x] Scaffold Nextjs app
@@ -67,19 +65,41 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
   - [x] card component
   - [ ] upload box component
 
+### QA Testing
+
+- [ ] SonarCloud code quality
+- [ ] Test API Gatway and lambda
+- [ ] Cypress
+- [ ] Jest
+
+
+### CICD
+
+- Github Actions deployemnt
+  - [ ] Deploy CDK
+  - [ ] Deploy Nextjs client
+- [x] NX Cloud build caching
+
+
 ### Documentation
-- [ ] Readme
-- [ ] Upload flow diagram
+- [x] Readme
+- [x] Upload flow diagram
 - [ ] Full Architecture diagram
   
 
 ### Stretch Goals
-- [ ] Search box for video listings filtering
-- [ ] Provision S3 storage bucket for thumbnails
-- [ ] AWS Media Converter Elements job creation DASH-ISO
-- [ ] Step functions sequential flow/job
-- [ ] Authentication using Cognito
-- [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
+- Platform
+  - [ ] Create lambda to returned signed url for for video upload
+  - [ ] Video upload using aws presigned url
+  - [ ] Provision S3 storage bucket for video storage
+  - [ ] Provision S3 storage bucket for thumbnails
+  - [ ] AWS Media Converter Elements job creation DASH-ISO
+  - [ ] Step functions sequential flow/job
+  - [ ] Provision cognito userpool using CDK
+  - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
+- Frontend
+  - [ ] Search box for video listings filtering
+  - [ ] Authentication using Cognito NextAuth
 
 ### Data (Dynamodb)
 
@@ -87,16 +107,9 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 | :-----:     | :--------------: | :-----:| :-----: | :-------:  | :------------:  | :-------:| :---------:   |
 | 208439      | userId#createdAt | 4:20   | mpeg    | http://... | http://...      | http//...| fjlkajdjljfl  |
 
-### CICD
 
-- Github Actions deployemnt
-- NX Cloud build caching
 
-### QA Testing
 
-- Cypress
-- Jest
-- Sonar Lint
 
 ### Research, docs and resources
 - [AWS Kinesis streaming mpeg-dash](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/dash-playback.html)
