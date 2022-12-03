@@ -44,22 +44,27 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Start Step function flow for upload email confirmation, compression and metadata extract
 
 ### Frontend
-- [ ] Nextjs frontend deployed to vercel
-- [ ] Tailwind ui lib for basic navigation and site components
-- [ ] Screens/Pages
+- [x] Scaffold Nextjs app
+- [x] Setup tailwind
+- [x] Setup routing and navigation pages
+- Screens/Pages
   - [ ] Home
   - [ ] Videos
   - [ ] Player
   - [ ] Upload
   - [ ] About (3d render of archicture and flow diagrams)
-- [ ] Dash video player client
-- [ ] Shared ui
-  - [ ] loading spinner component
-  - [ ] card component
-  - [ ] upload box component
-- [ ] shared
+- Components
+  - [ ] Dash video player client
+  - [x] RootLayout component
+
+
+### Libs
+- shared
   - [ ] mocks
   - [ ] types
+  - [ ] loading spinner component
+  - [x] card component
+  - [ ] upload box component
 
 ### Documentation
 - [ ] Readme
