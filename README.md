@@ -46,11 +46,16 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Authentication using Cognito
 - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
 
+<br>
+
+## Architecture
+![onvu-upload-flow](https://user-images.githubusercontent.com/65465380/205446658-0a495777-5978-49cf-a389-f9602ae6e2a8.png)
+
 ### Data design
 
-| PK (videoId)|  SK              | length | type    | bucket    | coverImg | transcription |
-| :-----:     | :--------------: | :-----:| :-----: | :-------: | :-------:| :---------:   |
-| 208439      | userId#createdAt | 4:20   | mpeg    | http://...| http//...| fjlkajdjljfl  |
+| PK (videoId)|  SK              | length | type    | inputBucket| outputBucketMpd | coverImg | transcription |
+| :-----:     | :--------------: | :-----:| :-----: | :-------:  | :------------:  | :-------:| :---------:   |
+| 208439      | userId#createdAt | 4:20   | mpeg    | http://... | http://...      | http//...| fjlkajdjljfl  |
 
 ### CICD
 
