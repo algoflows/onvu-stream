@@ -66,6 +66,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - shared
   - [ ] mocks
   - [ ] types
+  - [ ] hooks/dal
   - [ ] loading spinner component
   - [x] card component
   - [ ] upload box component
