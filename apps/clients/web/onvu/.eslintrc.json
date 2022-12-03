@@ -3,14 +3,17 @@
     "plugin:@nrwl/nx/react-typescript",
     "next",
     "next/core-web-vitals",
-    "../../.eslintrc.json"
+    "../../../../.eslintrc.json"
   ],
   "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@next/next/no-html-link-for-pages": ["error", "apps/next-web/pages"]
+        "@next/next/no-html-link-for-pages": [
+          "error",
+          "apps/clients/web/onvu/pages"
+        ]
       }
     },
     {
