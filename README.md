@@ -5,7 +5,12 @@
 
 # Stack
 
-- [Amazon Web Services CDK](https://aws.amazon.com/cdk/) - Lambda, S3, S3 Event Triggers, Media Converter Elements, Kenises and Dynamodb
+- [Amazon Web Services CDK](https://aws.amazon.com/cdk/)
+  - Lambda 
+  - S3, S3 Event Triggers
+  - Media Converter Elements
+  - Kenises Streaming
+  - DynamoDB
 - [Nextjs](https://nextjs.org/) - Web client 
 - [Jotai](https://jotai.org/) Atomic state management
 - [React Query](https://react-query-v3.tanstack.com/) (with jotai integration)
