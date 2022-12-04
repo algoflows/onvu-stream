@@ -1,0 +1,97 @@
+name: Deploy client-web-onvu to Netfliy hosting
+
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+
+  # This job will:
+  #   * deploy a draft every time there is a pull request created or synchronized that is not on master branch
+  #   * comment on that pull request with the deploy URL
+  deployPRDraft:
+    name: Deploy draft to Netlify
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.ref != 'refs/heads/master'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+          node-version: 18.x
+          # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+          cache: npm 
+          # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
+          cache-dependency-path: package-lock.json
+          
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+        
+      - uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: dev
+
+      - run: npx nx workspace-lint
+      - run: npx nx format:check
+      - run: npx nx affected --target=lint --parallel=3
+      - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - run: npx nx affected --target=build --parallel=3
+
+      - name: Deploy draft to Netlify
+        uses: evnex/netlify-deploy@v1.0.4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './dist/apps/clients/web/onvu'
+          draft: true
+          comment-on-pull-request: true
+
+  # This job will:
+  #   * deploy a production build every time there is a push on the master branch
+  #   * comment that commit with the deploy URL
+  publishMasterCommit:
+    name: Publish to Netlify
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+          node-version: 18.x
+          # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+          cache: npm 
+          # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
+          cache-dependency-path: package-lock.json
+          
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+        
+      - uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: dev
+
+      - run: npx nx workspace-lint
+      - run: npx nx format:check
+      - run: npx nx affected --target=lint --parallel=3
+      - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - run: npx nx affected --target=build --parallel=3
+
+      - name: Deploy production to Netlify
+        uses: evnex/netlify-deploy@v1.0.4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './dist/apps/clients/web/onvu'
+          comment-on-commit: true
