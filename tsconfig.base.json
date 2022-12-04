@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@opsap/shared/ui": ["libs/shared/ui/src/index.ts"]
+      "@onvu/shared/hooks": ["libs/shared/hooks/src/index.ts"],
+      "@onvu/shared/mocks": ["libs/shared/mocks/src/index.ts"],
+      "@onvu/shared/ui": ["libs/shared/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
