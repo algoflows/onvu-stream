@@ -8,7 +8,6 @@ on:
       - synchronize
 
 jobs:
-
   # This job will:
   #   * deploy a draft every time there is a pull request created or synchronized that is not on master branch
   #   * comment on that pull request with the deploy URL
@@ -19,20 +18,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
         with:
           # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
           node-version: 18.x
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
-          cache: npm 
+          cache: npm
           # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
           cache-dependency-path: package-lock.json
-          
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-        
+
       - uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: dev
@@ -63,20 +62,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
         with:
           # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
           node-version: 18.x
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
-          cache: npm 
+          cache: npm
           # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
           cache-dependency-path: package-lock.json
-          
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-        
+
       - uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: dev

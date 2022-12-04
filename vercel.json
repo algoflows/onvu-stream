@@ -1,0 +1,3 @@
+{
+  "builds": [{ "src": "./dist/apps/clients/web/onvu", "use": "@vercel/static" }]
+}
