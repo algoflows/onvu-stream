@@ -1,53 +1,41 @@
 {
   "name": "clients-web-onvu",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/clients/web/onvu",
+  "sourceRoot": "apps/clients/web/onvu/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/next:build",
+      "executor": "@nrwl/vite:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/clients/web/onvu",
         "outputPath": "dist/apps/clients/web/onvu"
       },
       "configurations": {
-        "development": {
-          "outputPath": "apps/clients/web/onvu"
-        },
+        "development": {},
         "production": {}
       }
     },
     "serve": {
-      "executor": "@nrwl/next:server",
+      "executor": "@nrwl/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "clients-web-onvu:build",
-        "dev": true
+        "buildTarget": "clients-web-onvu:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "clients-web-onvu:build:development",
-          "dev": true
+          "buildTarget": "clients-web-onvu:build:development"
         },
         "production": {
           "buildTarget": "clients-web-onvu:build:production",
-          "dev": false
+          "hmr": false
         }
       }
     },
-    "export": {
-      "executor": "@nrwl/next:export",
-      "options": {
-        "buildTarget": "clients-web-onvu:build:production"
-      }
-    },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@nrwl/vite:test",
+      "outputs": ["{projectRoot}/coverage"],
       "options": {
-        "jestConfig": "apps/clients/web/onvu/jest.config.ts",
         "passWithNoTests": true
       }
     },

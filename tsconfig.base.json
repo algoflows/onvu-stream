@@ -17,6 +17,7 @@
     "paths": {
       "@onvu/shared/hooks": ["libs/shared/hooks/src/index.ts"],
       "@onvu/shared/mocks": ["libs/shared/mocks/src/index.ts"],
+      "@onvu/shared/types": ["libs/shared/types/src/index.ts"],
       "@onvu/shared/ui": ["libs/shared/ui/src/index.ts"]
     }
   },
