@@ -43,7 +43,7 @@ export const getContext = async (app: cdk.App): Promise<CDKContext> => {
 
       const environment = await app.node
         .tryGetContext('environments')
-        .find((env: any) => env.branchName === currentBranch || 'dev');
+        .find((env: any) => env.branchName === currentBranch);
       console.log(`Environment:`);
       console.log(JSON.stringify(environment, null, 2));
 
