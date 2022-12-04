@@ -1,4 +1,4 @@
-name: Deploy client-web-onvu to Netfliy hosting
+name: Deploy client-web-onvu to Vercel hosting
 
 # https://github.com/marketplace/actions/vercel-action
 
@@ -14,9 +14,9 @@ jobs:
   #   * deploy a draft every time there is a pull request created or synchronized that is not on master branch
   #   * comment on that pull request with the deploy URL
   deployPRDraft:
-    name: Deploy draft to Netlify
+    name: Deploy draft to Vercel
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.ref != 'refs/heads/master'
+    if: github.event_name == 'pull_request' && github.ref != 'refs/heads/main'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -50,13 +50,13 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
           vercel-org-id: ${{ secrets.ORG_ID}} #Required
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
-          working-directory: ./sub-directory
+          working-directory: ./dist/apps/clients/web/onvu
 
   # This job will:
   #   * deploy a production build every time there is a push on the master branch
   #   * comment that commit with the deploy URL
   publishMasterCommit:
-    name: Publish to Netlify
+    name: Publish to Vercel
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
@@ -93,4 +93,4 @@ jobs:
           vercel-args: '--prod' #Optional
           vercel-org-id: ${{ secrets.ORG_ID}} #Required
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
-          working-directory: ./sub-directory
+          working-directory: ./dist/apps/clients/web/onvu
