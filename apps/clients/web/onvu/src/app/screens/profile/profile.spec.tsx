@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Videos from './index';
+import Profile from '.';
 
-describe('Upload', () => {
+describe('Profile', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Videos />);
+    const { baseElement } = render(<Profile />);
     expect(baseElement).toBeTruthy();
   });
 });

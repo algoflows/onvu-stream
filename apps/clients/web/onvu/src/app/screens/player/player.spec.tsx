@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import About from './index';
+import Player from '.';
 
-describe('About', () => {
+describe('Player', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<About />);
+    const { baseElement } = render(<Player />);
     expect(baseElement).toBeTruthy();
   });
 });

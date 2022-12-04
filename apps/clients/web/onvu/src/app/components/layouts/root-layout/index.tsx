@@ -1,52 +1,45 @@
-import {Fragment} from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import OnvuLogo from '../../assets/onvu-logo.png'
-import { useRouter } from 'next/router'
+import { Fragment } from 'react';
+import { Link, Outlet } from '@tanstack/react-router';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import OnvuLogo from '../../../assets/onvu-logo.png';
 
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+};
+
+// interface Navigation {
+//   name: string;
+//   href: string;
+//   current: boolean;
+// }
+
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Videos', href: '/videos', current: false },
+  { name: 'Player', href: '/player', current: false },
   { name: 'Upload', href: '/upload', current: false },
   { name: 'About', href: '/about', current: false },
-]
+  { name: 'Profile', href: '/profile', current: false },
+];
+
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#' },
-]
+];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
 }
 
-interface RootLayoutProps {
-  children: React.ReactNode
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
-  const router = useRouter()
-
-  console.log(router.asPath)
+export const RootLayout = () => {
   return (
-    <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
+    <div>
       <div className="min-h-full">
+        {' '}
         <Disclosure as="nav" className="bg-white shadow-sm">
           {({ open }) => (
             <>
@@ -54,31 +47,72 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <div className="flex h-16 justify-between">
                   <div className="flex">
                     <div className="flex flex-shrink-0 items-center">
-                      <Image
+                      <img
                         className="block h-12 w-auto lg:hidden"
                         src={OnvuLogo}
                         alt="Onvu Streaming"
                       />
-                      <Image
+                      <img
                         className="hidden p-3 h-20 w-auto lg:block"
                         src={OnvuLogo}
                         alt="Your Company"
                       />
                     </div>
                     <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                      {navigation.map((item) => (
+                      {/* {navigation.map((item) => (
+                        // tslint:disable-next-line
                         <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
                           className={classNames(
-                              'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                            'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
                             'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
                           )}
-                          aria-current={item.current ? 'page' : undefined}
+                          aria-current="page"
                         >
                           {item.name}
                         </Link>
-                      ))}
+                      ))} */}
+                      <Link
+                        to="/"
+                        className={classNames(
+                          'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                          'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+                        )}
+                        aria-current="page"
+                      >
+                        Home
+                      </Link>
+                      <Link
+                        to="/player"
+                        className={classNames(
+                          'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                          'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+                        )}
+                        aria-current="page"
+                      >
+                        Player
+                      </Link>
+                      <Link
+                        to="/about"
+                        className={classNames(
+                          'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                          'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+                        )}
+                        aria-current="page"
+                      >
+                        Upload
+                      </Link>
+                      <Link
+                        to="/upload"
+                        className={classNames(
+                          'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                          'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+                        )}
+                        aria-current="page"
+                      >
+                        About
+                      </Link>
                     </div>
                   </div>
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -95,7 +129,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       <div>
                         <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2">
                           <span className="sr-only">Open user menu</span>
-                          <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                          <img
+                            className="h-8 w-8 rounded-full"
+                            src={user.imageUrl}
+                            alt=""
+                          />
                         </Menu.Button>
                       </div>
                       <Transition
@@ -132,9 +170,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
-                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                        <XMarkIcon
+                          className="block h-6 w-6"
+                          aria-hidden="true"
+                        />
                       ) : (
-                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                        <Bars3Icon
+                          className="block h-6 w-6"
+                          aria-hidden="true"
+                        />
                       )}
                     </Disclosure.Button>
                   </div>
@@ -154,20 +198,27 @@ export default function RootLayout({ children }: RootLayoutProps) {
                           : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800',
                         'block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
                       )}
-                      aria-current={item.current ? 'page' : undefined}
                     >
-                      {item.name}
+                      Home
                     </Disclosure.Button>
                   ))}
                 </div>
                 <div className="border-t border-gray-200 pt-4 pb-3">
                   <div className="flex items-center px-4">
                     <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={user.imageUrl}
+                        alt=""
+                      />
                     </div>
                     <div className="ml-3">
-                      <div className="text-base font-medium text-gray-800">{user.name}</div>
-                      <div className="text-sm font-medium text-gray-500">{user.email}</div>
+                      <div className="text-base font-medium text-gray-800">
+                        {user.name}
+                      </div>
+                      <div className="text-sm font-medium text-gray-500">
+                        {user.email}
+                      </div>
                     </div>
                     <button
                       type="button"
@@ -178,35 +229,36 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     </button>
                   </div>
                   <div className="mt-3 space-y-1">
-                    {userNavigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
-                      >
-                        {item.name}
-                      </Disclosure.Button>
-                    ))}
+                    <Disclosure.Button className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">
+                      <Link>Home</Link>
+                    </Disclosure.Button>
+                    <Disclosure.Button className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">
+                      <Link>Player</Link>
+                    </Disclosure.Button>
+                    <Disclosure.Button className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">
+                      <Link>Upload</Link>
+                    </Disclosure.Button>
+                    <Disclosure.Button className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">
+                      <Link>About</Link>
+                    </Disclosure.Button>
                   </div>
                 </div>
               </Disclosure.Panel>
             </>
           )}
         </Disclosure>
-
         <div className="py-8">
           <main>
             <div className="mx-auto max-w-5xl sm:px-6 lg:px-12">
               {/* Replace with your content */}
               <div className="px-8 py-8 sm:px-0">
-                {children}
+                <Outlet />
               </div>
               {/* /End replace */}
             </div>
           </main>
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};

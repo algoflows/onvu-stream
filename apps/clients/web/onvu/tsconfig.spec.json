@@ -1,13 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../../dist/out-tsc",
-    "module": "commonjs",
-    "types": ["jest", "node"],
-    "jsx": "react"
+    "outDir": "../../dist/out-tsc",
+    "types": ["vitest/globals", "node"]
   },
   "include": [
-    "jest.config.ts",
+    "vite.config.ts",
     "**/*.test.ts",
     "**/*.spec.ts",
     "**/*.test.tsx",
@@ -17,5 +15,9 @@
     "**/*.test.jsx",
     "**/*.spec.jsx",
     "**/*.d.ts"
+  ],
+  "files": [
+    "../../../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
+    "../../../../node_modules/@nrwl/react/typings/image.d.ts"
   ]
 }
