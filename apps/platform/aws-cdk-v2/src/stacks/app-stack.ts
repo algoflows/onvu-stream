@@ -12,6 +12,7 @@ import * as sns from 'aws-cdk-lib/aws-sns';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as logs from 'aws-cdk-lib/aws-logs';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { join } from 'path';
 import { CDKContext } from '../../types';
@@ -106,7 +107,26 @@ export class AppStack extends Stack {
       authType: lambda.FunctionUrlAuthType.NONE,
     });
 
-    videoInputBucket.grantPut(getS3SignedUrlLambda);
+    videoInputBucket.addToResourcePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        principals: [new iam.StarPrincipal()],
+        actions: ['s3:PutObject'],
+        resources: [`${videoInputBucket.bucketArn}/*`],
+      })
+    );
+
+    videoInputBucket.policy?.document.addStatements(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        principals: [new iam.StarPrincipal()],
+        actions: ['s3:PutObject'],
+        resources: [videoInputBucket.bucketArn],
+      })
+    );
+
+    // videoInputBucket.grantPut(getS3SignedUrlLambda);
+    videoInputBucket.grantPublicAccess();
     videoOutputBucket.grantPublicAccess();
     videoThumbnailBucket.grantPublicAccess();
 
@@ -117,19 +137,19 @@ export class AppStack extends Stack {
     // s3 bucket cors configuration
     videoInputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
+      allowedMethods: [s3.HttpMethods.PUT, s3.HttpMethods.POST],
       allowedHeaders: ['*'],
     });
 
     videoOutputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
+      allowedMethods: [s3.HttpMethods.GET],
       allowedHeaders: ['*'],
     });
 
     videoThumbnailBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
+      allowedMethods: [s3.HttpMethods.GET],
       allowedHeaders: ['*'],
     });
 
