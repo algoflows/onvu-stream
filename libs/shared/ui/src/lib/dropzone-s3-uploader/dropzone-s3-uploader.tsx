@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable */
+/* tslint:disable */
+// @ts-nocheck
+
+import React, { useState } from 'react';
 import Dropzone from 'react-dropzone-uploader';
+import type { VideoMeta } from '@onvu/shared/types';
 
 import 'react-dropzone-uploader/dist/styles.css';
 
 /* eslint-disable-next-line */
 export interface DropzoneS3UploaderProps {
   bucketUrl: string;
-  handleMetadata: (metadata: Record<string, string>) => void;
+  handleMetadata: (metadata: VideoMeta) => void;
   handleChangeStatus: (status: string) => void;
 }
 
@@ -15,7 +20,7 @@ export function DropzoneS3Uploader(props: DropzoneS3UploaderProps) {
   const getUploadParams = async ({
     file,
     meta: { name },
-  }: Record<any, any>) => {
+  }: Record<string, VideoMeta>) => {
     return {
       body: file,
       meta: { fileUrl: '/' },
@@ -24,22 +29,21 @@ export function DropzoneS3Uploader(props: DropzoneS3UploaderProps) {
     };
   };
 
-  const handleChangeStatus = ({ meta }: any, status: string) => {
+  const onChanges = (meta: VideoMeta, status: string) => {
     props.handleChangeStatus(status);
+    props.handleMetadata(meta);
     setStatus(status);
   };
 
-  const handleSubmit = (files: any, allFiles: any) => {
+  const onSubmit = (files: any, allFiles: any) => {
     console.log(files.map((f: any) => f.meta));
   };
 
   return (
     <Dropzone
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       getUploadParams={getUploadParams}
-      onChangeStatus={handleChangeStatus}
-      onSubmit={handleSubmit}
+      onChangeStatus={onChanges}
+      onSubmit={onSubmit}
       autoUpload={true}
       accept="video/*"
       inputContent={(files, extra) =>

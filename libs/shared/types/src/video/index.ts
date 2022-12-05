@@ -16,6 +16,21 @@ export interface Video {
   hashtags?: string[];
 }
 
+export interface VideoMeta {
+  name: string;
+  size: number;
+  type: string;
+  lastModifiedDate?: string;
+  uploadedDate?: string;
+  percent?: number;
+  id?: string;
+  status?: string;
+  duration: number;
+  videoWidth?: number;
+  videoHeight?: number;
+  fileUrl?: string;
+}
+
 // export interface Channel {
 //   id: string;
 //   name: string;
