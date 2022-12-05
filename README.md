@@ -12,9 +12,9 @@
   - Kenises Streaming
   - DynamoDB
 - [Reactjs](https://vitejs.dev/) - Web client 
-- [Tanstack Router](https://tanstack.com/)
-- [Jotai](https://jotai.org/) Atomic state management
+- [Tanstack Router](https://tanstack.com/) Advanced react router (built for dashboards and complex SPAs)
 - [React Query](https://react-query-v3.tanstack.com/) (with jotai integration)
+- [Jotai](https://jotai.org/) Atomic state management
 - [Tailwind](https://tailwindcss.com/) shared UI library
 - [NX.dev](https://nx.dev/) monorepo workspace
 - [Cypress](https://www.cypress.io/) Visual testing framework
