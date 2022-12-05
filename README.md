@@ -69,6 +69,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 ### Libs
 - shared
+  - [ ] config (constants etc..)
   - [ ] mocks
   - [ ] types
   - [ ] hooks/dal
