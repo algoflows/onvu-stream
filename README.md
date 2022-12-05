@@ -3,7 +3,13 @@
   <img src="https://user-images.githubusercontent.com/65465380/204162512-739f028b-24a4-4ec5-b40e-afe7608d8f0e.png" width="600">
 </div>
 
+<div align="center">
+
+![GitHub deployments](https://img.shields.io/github/deployments/algoflows/onvu-stream/production?label=vercel&logo=vercel&logoColor=white) 
+
 [Project Planning](https://github.com/users/algoflows/projects/2/views/2) | [Milestones](https://github.com/algoflows/onvu-stream/milestones) | [Issues](https://github.com/algoflows/onvu-stream/issues)
+
+</div>
 
 
 # Stack
