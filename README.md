@@ -11,7 +11,8 @@
   - Media Converter Elements
   - Kenises Streaming
   - DynamoDB
-- [Nextjs](https://nextjs.org/) - Web client 
+- [Reactjs](https://vitejs.dev/) - Web client 
+- [Tanstack Router](https://tanstack.com/)
 - [Jotai](https://jotai.org/) Atomic state management
 - [React Query](https://react-query-v3.tanstack.com/) (with jotai integration)
 - [Tailwind](https://tailwindcss.com/) shared UI library
