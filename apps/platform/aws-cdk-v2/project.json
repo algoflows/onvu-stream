@@ -4,17 +4,23 @@
   "projectType": "application",
   "sourceRoot": "apps/platform/aws-cdk-v2/src",
   "targets": {
-    "deploy": {
+    "deploy-dev": {
       "executor": "@ago-dev/nx-aws-cdk-v2:deploy",
-      "options": {}
+      "options": {
+        "profile": "onvu-dev"
+      }
     },
-    "destroy": {
+    "destroy-dev": {
       "executor": "@ago-dev/nx-aws-cdk-v2:destroy",
-      "options": {}
+      "options": {
+        "profile": "onvu-dev"
+      }
     },
-    "bootstrap": {
+    "bootstrap-dev": {
       "executor": "@ago-dev/nx-aws-cdk-v2:bootstrap",
-      "options": {}
+      "options": {
+        "profile": "onvu-dev"
+      }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
