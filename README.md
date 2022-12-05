@@ -97,7 +97,10 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 
 - Github Actions deployemnt
   - [ ] Deploy CDK
-  - [ ] Deploy Nextjs client
+  - [x] Deploy React App (Vercel Git integration)
+    - [x] dev  domain: https://onvu-stream-dev.vercel.app/
+    - [x] test domain: https://onvu-stream-test.vercel.app/
+    - [x] prod domain: https://onvu-stream.vercel.app/
 - [x] NX Cloud build caching
 
 
