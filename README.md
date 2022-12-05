@@ -3,6 +3,8 @@
   <img src="https://user-images.githubusercontent.com/65465380/204162512-739f028b-24a4-4ec5-b40e-afe7608d8f0e.png" width="600">
 </div>
 
+[![Deploy client-web-onvu to Vercel hosting](https://github.com/algoflows/onvu-stream/actions/workflows/clients-web-onvu-vercel-deployment.yml/badge.svg)](https://github.com/algoflows/onvu-stream/actions/workflows/clients-web-onvu-vercel-deployment.yml)
+
 # Stack
 
 - [Amazon Web Services CDK](https://aws.amazon.com/cdk/)
