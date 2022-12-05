@@ -63,7 +63,7 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [ ] Setup AWS env accounts (prod account, dev account, temp test account)
 
 ### Frontend
-- [x] Scaffold Nextjs app
+- [x] Scaffold Nextjs app (ATT changed for Vite powered React App)
 - [x] Setup tailwind
 - [x] Setup routing and navigation pages
 - Screens/Pages
