@@ -1,6 +1,6 @@
 import { DropzoneS3Uploader } from '@onvu/shared/ui';
 import { usePostVideoMeta } from '@onvu/shared/hooks';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { VideoMeta } from '@onvu/shared/types';
 
 /* eslint-disable-next-line */
