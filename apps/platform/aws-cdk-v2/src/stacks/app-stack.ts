@@ -10,6 +10,9 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as sns from 'aws-cdk-lib/aws-sns';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as logs from 'aws-cdk-lib/aws-logs';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { join } from 'path';
 import { CDKContext } from '../../types';
@@ -23,16 +26,32 @@ export class AppStack extends Stack {
   ) {
     super(scope, id, props);
 
-    const helloHandler = new NodejsFunction(this, 'HelloHandler', {
+    // lambda function base config
+    const lambdaConfig = {
       runtime: Runtime.NODEJS_16_X,
-      entry: join(__dirname, '../../../../functions/hello.ts'),
-      memorySize: 1024,
+      tracing: lambda.Tracing.ACTIVE,
+      logRetention: logs.RetentionDays.ONE_WEEK,
       timeout: Duration.seconds(10),
+      memorySize: 256,
       bundling: {
         minify: true,
         sourceMap: true,
         target: 'es2020',
       },
+    };
+
+    // S3 buckets base config
+    const videoBucketConfig = {
+      autoDeleteObjects: true,
+      encryption: context?.s3Encrypt
+        ? s3.BucketEncryption.S3_MANAGED
+        : s3.BucketEncryption.UNENCRYPTED,
+      removalPolicy: RemovalPolicy.DESTROY,
+    };
+
+    const helloHandler = new NodejsFunction(this, 'HelloHandler', {
+      ...lambdaConfig,
+      entry: join(__dirname, '../../../../functions/hello.ts'),
     });
 
     // create video transcoding sns topic
@@ -47,15 +66,6 @@ export class AppStack extends Stack {
       protocol: sns.SubscriptionProtocol.EMAIL,
       topic: videoTranscodingTopic,
     });
-
-    // S3 buckets and config
-    const videoBucketConfig = {
-      autoDeleteObjects: true,
-      encryption: context?.s3Encrypt
-        ? s3.BucketEncryption.S3_MANAGED
-        : s3.BucketEncryption.UNENCRYPTED,
-      removalPolicy: RemovalPolicy.DESTROY,
-    };
 
     const videoInputBucket = new s3.Bucket(this, 'VideoInputBucket', {
       ...videoBucketConfig,
@@ -72,6 +82,50 @@ export class AppStack extends Stack {
       bucketName: `${context?.appName}-${context?.environment}-video-thumbnail-bucket`,
     });
 
+    // Lambda function in charge of creating the PreSigned URL
+    const getS3SignedUrlLambda = new NodejsFunction(
+      this,
+      'GetS3SignedUrlLambda',
+      {
+        ...lambdaConfig,
+        entry: join(
+          __dirname,
+          '../../../../functions/get-s3-pre-signed-url.ts'
+        ),
+        description:
+          'Function that creates a presigned URL to upload a file into S3',
+        environment: {
+          UPLOAD_BUCKET: videoInputBucket.bucketName,
+          URL_EXPIRATION_SECONDS: (3 * 60 * 60).toString(), // 3 hours
+          ALLOWED_ORIGIN: '*',
+        },
+      }
+    );
+
+    // create lambda url
+    const preSignedS3Url = getS3SignedUrlLambda.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+    });
+
+    videoInputBucket.addToResourcePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        principals: [new iam.StarPrincipal()],
+        actions: ['s3:PutObject'],
+        resources: [`${videoInputBucket.bucketArn}/*`],
+      })
+    );
+
+    videoInputBucket.policy?.document.addStatements(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        principals: [new iam.StarPrincipal()],
+        actions: ['s3:PutObject'],
+        resources: [videoInputBucket.bucketArn],
+      })
+    );
+
+    // videoInputBucket.grantPut(getS3SignedUrlLambda);
     videoInputBucket.grantPublicAccess();
     videoOutputBucket.grantPublicAccess();
     videoThumbnailBucket.grantPublicAccess();
@@ -83,19 +137,19 @@ export class AppStack extends Stack {
     // s3 bucket cors configuration
     videoInputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
+      allowedMethods: [s3.HttpMethods.PUT, s3.HttpMethods.POST],
       allowedHeaders: ['*'],
     });
 
     videoOutputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
+      allowedMethods: [s3.HttpMethods.GET],
       allowedHeaders: ['*'],
     });
 
     videoThumbnailBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
+      allowedMethods: [s3.HttpMethods.GET],
       allowedHeaders: ['*'],
     });
 
@@ -117,6 +171,14 @@ export class AppStack extends Stack {
     // Outputs
     new CfnOutput(this, 'hello-handler-arn', {
       value: helloHandler.functionArn,
+    });
+    new CfnOutput(this, 'get-s3-signed-url-lambda-arn', {
+      value: getS3SignedUrlLambda.functionArn,
+    });
+
+    // signedS3Url is the URL that will be used to upload the file to S3
+    new CfnOutput(this, 'signed-s3-url', {
+      value: preSignedS3Url.url,
     });
 
     new CfnOutput(this, 'video-transcoding-topic-arn', {

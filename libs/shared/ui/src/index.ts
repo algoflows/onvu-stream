@@ -1,2 +1,2 @@
 export * from './lib/card-player/card-player';
-export * from './lib/shared-ui';
+export * from './lib/dropzone-s3-uploader/dropzone-s3-uploader';
