@@ -51,16 +51,14 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 ### Platform
 - [ ] Provision dynamodb table to store video metadata
 - [ ] Provision POST Lambda to store video metadata and mpd reference url in dynamodb table
-  - [ ] Use mediainfo.js to extract mp4 metadata
+- [ ] Use mediainfo.js to extract mp4 metadata
 - [ ] Provision GET lambda to get all videos
 - [ ] Provision GET lambda to get single video ref
-- [ ] Create lambda to returned signed url for for video upload
-- [ ] Video upload using aws presigned url
 - Provision S3 storage bucket for video and asset storage (AWS VideoTranscoder solution)
-  - [ ] S3 input bucket (new uploads, mp4)
-  - [ ] S3 ouput bucket (after transcoding into mp4 dash)
-  - [ ] S3 thumnail bucket
-- [ ] Setup AWS env accounts (prod account, dev account, temp test account)
+  - [x] S3 input bucket (new uploads, mp4)
+  - [x] S3 ouput bucket (after transcoding into mp4 dash)
+  - [x] S3 thumnail bucket
+- [x] Setup AWS env accounts (prod account, dev account, temp test account)
 
 ### Frontend
 - [x] Scaffold Nextjs app (ATT changed for Vite powered React App)
@@ -68,11 +66,11 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
 - [x] Setup routing and navigation pages
 - Screens/Pages
   - [x] Home
-  - [ ] Player
+  - [x] Player
   - [ ] Upload
   - [ ] About (3d render of archicture and flow diagrams, iframe)
 - Components
-  - [ ] Dash video player client
+  - [x] Dash video player client
   - [x] RootLayout component
   - [ ] limit file upload size (300mb)
 
@@ -116,6 +114,8 @@ Design a simple web application that plays a video delivered by MPEG-Dash. It sh
   - [ ] Step functions sequential flow/job
   - [ ] Provision cognito userpool using CDK
   - [ ] AWS transcription service (extract keywords automatically and ability to see video transcription next to streaming client)
+  - [ ] Create lambda to returned signed url for for video upload
+  - [ ] Video upload using aws presigned url
 - Frontend
   - [ ] Search box for video listings filtering
   - [ ] Authentication using Cognito NextAuth
