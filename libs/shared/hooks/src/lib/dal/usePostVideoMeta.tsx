@@ -33,8 +33,7 @@ export function usePostVideoMeta(props: UsePostVideoMetaProps) {
           });
           const { result } = await response.json();
           console.log('result', result);
-          // setResult(result);
-
+          setResult(result);
           setLoading(false);
         } catch (e) {
           if (e instanceof Error) {
