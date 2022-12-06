@@ -6,8 +6,13 @@ import type { Video } from '@onvu/shared/types';
 /* eslint-disable-next-line */
 export interface HomeProps {}
 
+const getVideosUrl =
+  'https://vt6ynaq4uf4z2exczsarzmsfo40vgnaj.lambda-url.eu-west-1.on.aws/';
+
 export function Home(props: HomeProps) {
-  const { videos, loading } = useGetVideos({ mocks: homeFeedResponse });
+  const { videos, loading } = useGetVideos({
+    url: getVideosUrl,
+  });
   console.log(videos);
   return (
     <div className="flex w-full min-h-full justify-center">

@@ -29,12 +29,15 @@ export function useGetVideos(props: UseGetVideosProps) {
               'Content-Type': 'application/json',
             },
           });
-          const { videos } = await response.json();
+          const result = await response.json();
+          console.log('result', result);
+          console.log('Items', result.Items);
           setVideos(videos);
           setLoading(false);
         }
       } catch (error) {
         if (error) setError(error);
+        console.log(error);
         setLoading(false);
       }
     };

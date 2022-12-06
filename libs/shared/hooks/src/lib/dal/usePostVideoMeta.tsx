@@ -31,7 +31,7 @@ export function usePostVideoMeta(props: UsePostVideoMetaProps) {
             },
             body: JSON.stringify(meta),
           });
-          const { result } = await response.json();
+          const { result } = await JSON.parse(response);
           console.log('result', result);
           setResult(result);
           setLoading(false);

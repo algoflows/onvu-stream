@@ -80,7 +80,7 @@ export class AppStack extends Stack {
         VIDEO_TABLE_NAME: videosTable.tableName,
         ALLOWED_ORIGIN: '*',
       },
-      entry: join(__dirname, '../../../../functions/save-video-metadata.ts'),
+      entry: join(__dirname, '../../../../functions/get-all-videos.ts'),
     });
 
     // create video transcoding sns topic
@@ -163,6 +163,7 @@ export class AppStack extends Stack {
 
     // grant dynamodb permissions to lambda
     videosTable.grantReadWriteData(saveVideoMetadata);
+    videosTable.grantReadData(getAllVideos);
 
     // videoInputBucket.grantPut(getS3SignedUrlLambda);
     videoInputBucket.grantPublicAccess();
