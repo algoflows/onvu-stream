@@ -49,9 +49,28 @@ export class AppStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     };
 
-    const helloHandler = new NodejsFunction(this, 'HelloHandler', {
+    const videosTable = new dynamodb.Table(this, 'VideosTable', {
+      removalPolicy: RemovalPolicy.DESTROY,
+      tableName: `${context?.appName}-${context?.environment}-videos-table`,
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+      partitionKey: {
+        name: 'PK',
+        type: dynamodb.AttributeType.STRING,
+      },
+      sortKey: {
+        name: 'SK',
+        type: dynamodb.AttributeType.STRING,
+      },
+      pointInTimeRecovery: context?.ddbPITRecovery,
+    });
+
+    const saveVideoMetadata = new NodejsFunction(this, 'SaveVideoMetadata', {
       ...lambdaConfig,
-      entry: join(__dirname, '../../../../functions/hello.ts'),
+      environment: {
+        VIDEO_TABLE_NAME: videosTable.tableName,
+        ALLOWED_ORIGIN: '*',
+      },
+      entry: join(__dirname, '../../../../functions/save-video-metadata.ts'),
     });
 
     // create video transcoding sns topic
@@ -107,78 +126,70 @@ export class AppStack extends Stack {
       authType: lambda.FunctionUrlAuthType.NONE,
     });
 
+    const saveVideoMetadataUrl = saveVideoMetadata.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+    });
+
     videoInputBucket.addToResourcePolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         principals: [new iam.StarPrincipal()],
-        actions: ['s3:PutObject'],
+        actions: ['s3:Put*', 's3:Get*', 's3:List*'],
         resources: [`${videoInputBucket.bucketArn}/*`],
       })
     );
 
-    videoInputBucket.policy?.document.addStatements(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
-        principals: [new iam.StarPrincipal()],
-        actions: ['s3:PutObject'],
-        resources: [videoInputBucket.bucketArn],
-      })
-    );
+    // videoInputBucket.policy?.document.addStatements(
+    //   new iam.PolicyStatement({
+    //     effect: iam.Effect.ALLOW,
+    //     principals: [new iam.StarPrincipal()],
+    //     actions: ['s3:PutObject', 's3:GetObject'],
+    //     resources: [videoInputBucket.bucketArn],
+    //   })
+    // );
+
+    // grant dynamodb permissions to lambda
+    videosTable.grantReadWriteData(saveVideoMetadata);
 
     // videoInputBucket.grantPut(getS3SignedUrlLambda);
     videoInputBucket.grantPublicAccess();
     videoOutputBucket.grantPublicAccess();
     videoThumbnailBucket.grantPublicAccess();
 
-    videoInputBucket.grantReadWrite(helloHandler);
-    videoOutputBucket.grantReadWrite(helloHandler);
-    videoThumbnailBucket.grantReadWrite(helloHandler);
-
     // s3 bucket cors configuration
     videoInputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.PUT, s3.HttpMethods.POST],
+      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
       allowedHeaders: ['*'],
     });
 
     videoOutputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET],
+      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
       allowedHeaders: ['*'],
     });
 
     videoThumbnailBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET],
+      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
       allowedHeaders: ['*'],
     });
 
-    const videosTable = new dynamodb.Table(this, 'VideosTable', {
-      removalPolicy: RemovalPolicy.DESTROY,
-      tableName: `${context?.appName}-${context?.environment}-demo-table`,
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      partitionKey: {
-        name: 'haskKey',
-        type: dynamodb.AttributeType.STRING,
-      },
-      sortKey: {
-        name: 'rangeKey',
-        type: dynamodb.AttributeType.STRING,
-      },
-      pointInTimeRecovery: context?.ddbPITRecovery,
+    // Outputs
+    new CfnOutput(this, 'save-video-metadata--arn', {
+      value: saveVideoMetadata.functionArn,
     });
 
-    // Outputs
-    new CfnOutput(this, 'hello-handler-arn', {
-      value: helloHandler.functionArn,
-    });
     new CfnOutput(this, 'get-s3-signed-url-lambda-arn', {
       value: getS3SignedUrlLambda.functionArn,
     });
 
-    // signedS3Url is the URL that will be used to upload the file to S3
     new CfnOutput(this, 'signed-s3-url', {
       value: preSignedS3Url.url,
+    });
+
+    new CfnOutput(this, 'save-video-metadata-url', {
+      value: saveVideoMetadataUrl.url,
     });
 
     new CfnOutput(this, 'video-transcoding-topic-arn', {

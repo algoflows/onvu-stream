@@ -9,7 +9,7 @@ export function Player(props: PlayerProps) {
     <div>
       <ShakaPlayer
         autoPlay
-        src="https://platform-aws-cdk-v2-dev-video-output-bucket.s3.eu-west-1.amazonaws.com/hunt1234/playlist.mpd"
+        src="https://platform-aws-cdk-v2-dev-video-output-bucket.s3.eu-west-1.amazonaws.com/hunt1234/hunt1234.mpd"
       />
     </div>
   );

@@ -1,2 +1,17 @@
-POST https://biqcmnzsli4kys655luh4f74ri0ishya.lambda-url.eu-west-1.on.aws/
+# POST https://biqcmnzsli4kys655luh4f74ri0ishya.lambda-url.eu-west-1.on.aws/
+# Content-Type: application/json
+
+POST https://cr5bsi42jxcietfwi5rqlzpiki0mardt.lambda-url.eu-west-1.on.aws/
 Content-Type: application/json
+
+{
+  "name": "awesome",
+  "description": "awesome description",
+  "uploadedDate": "2019-01-01",
+  "lastModifiedDate": "2019-01-01",
+  "size": 100,
+  "type": "video/mp4",
+  "duration": 100,
+  "videoWidth": 100,
+  "videoHeight": 100
+}
