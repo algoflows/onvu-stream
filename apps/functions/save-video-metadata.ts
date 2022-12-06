@@ -76,7 +76,7 @@ function sendSuccess(result) {
       'Access-Control-Allow-Origin': process.env.ALLOWED_ORIGIN || '*',
       'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
     },
-    body: JSON.stringify(result),
+    body: JSON.stringify({ result }),
   };
 }
 

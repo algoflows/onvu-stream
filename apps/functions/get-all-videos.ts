@@ -29,7 +29,7 @@ export const handler: Handler = async (_event, _context): Promise<any> => {
 };
 
 function sendSuccess(result) {
-  console.log('[Dynamodb save success]', result);
+  console.log('[Dynamodb save success]', result.Items);
   return {
     statusCode: 200,
     headers: {
@@ -38,7 +38,7 @@ function sendSuccess(result) {
       'Access-Control-Allow-Origin': process.env.ALLOWED_ORIGIN || '*',
       'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
     },
-    body: JSON.stringify(result),
+    body: JSON.stringify({ Items: result.Items }),
   };
 }
 

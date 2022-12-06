@@ -23,6 +23,7 @@
     "constructs": "^10.1.164",
     "core-js": "^3.6.5",
     "git-branch": "^2.0.1",
+    "nanoid": "^4.0.0",
     "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

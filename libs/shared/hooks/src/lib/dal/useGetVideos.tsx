@@ -23,12 +23,13 @@ export function useGetVideos(props: UseGetVideosProps) {
         }
         if (url) {
           const response = await fetch(url, {
-            mode: 'no-cors',
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
             },
           });
+
+          console.log(response);
           const result = await response.json();
           console.log('result', result);
           console.log('Items', result.Items);
