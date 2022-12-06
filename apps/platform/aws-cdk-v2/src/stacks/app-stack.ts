@@ -54,11 +54,11 @@ export class AppStack extends Stack {
       tableName: `${context?.appName}-${context?.environment}-videos-table`,
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
       partitionKey: {
-        name: 'pk',
+        name: 'PK',
         type: dynamodb.AttributeType.STRING,
       },
       sortKey: {
-        name: 'sk',
+        name: 'SK',
         type: dynamodb.AttributeType.STRING,
       },
       pointInTimeRecovery: context?.ddbPITRecovery,
@@ -68,6 +68,7 @@ export class AppStack extends Stack {
       ...lambdaConfig,
       environment: {
         VIDEO_TABLE_NAME: videosTable.tableName,
+        ALLOWED_ORIGIN: '*',
       },
       entry: join(__dirname, '../../../../functions/save-video-metadata.ts'),
     });
@@ -133,19 +134,22 @@ export class AppStack extends Stack {
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         principals: [new iam.StarPrincipal()],
-        actions: ['s3:PutObject'],
+        actions: ['s3:Put*', 's3:Get*', 's3:List*'],
         resources: [`${videoInputBucket.bucketArn}/*`],
       })
     );
 
-    videoInputBucket.policy?.document.addStatements(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
-        principals: [new iam.StarPrincipal()],
-        actions: ['s3:PutObject'],
-        resources: [videoInputBucket.bucketArn],
-      })
-    );
+    // videoInputBucket.policy?.document.addStatements(
+    //   new iam.PolicyStatement({
+    //     effect: iam.Effect.ALLOW,
+    //     principals: [new iam.StarPrincipal()],
+    //     actions: ['s3:PutObject', 's3:GetObject'],
+    //     resources: [videoInputBucket.bucketArn],
+    //   })
+    // );
+
+    // grant dynamodb permissions to lambda
+    videosTable.grantReadWriteData(saveVideoMetadata);
 
     // videoInputBucket.grantPut(getS3SignedUrlLambda);
     videoInputBucket.grantPublicAccess();
@@ -155,19 +159,19 @@ export class AppStack extends Stack {
     // s3 bucket cors configuration
     videoInputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.PUT, s3.HttpMethods.POST],
+      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
       allowedHeaders: ['*'],
     });
 
     videoOutputBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET],
+      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
       allowedHeaders: ['*'],
     });
 
     videoThumbnailBucket.addCorsRule({
       allowedOrigins: ['*'],
-      allowedMethods: [s3.HttpMethods.GET],
+      allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
       allowedHeaders: ['*'],
     });
 

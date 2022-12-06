@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@onvu/shared/config": ["libs/shared/config/src/index.ts"],
       "@onvu/shared/hooks": ["libs/shared/hooks/src/index.ts"],
       "@onvu/shared/mocks": ["libs/shared/mocks/src/index.ts"],
       "@onvu/shared/types": ["libs/shared/types/src/index.ts"],

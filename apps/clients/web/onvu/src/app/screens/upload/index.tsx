@@ -8,15 +8,16 @@ export interface UploadProps {}
 
 const bucketUrl =
   'https://platform-aws-cdk-v2-dev-video-input-bucket.s3.eu-west-1.amazonaws.com/';
-const lamdbaUrl = 'https://api.onvu.app/video';
+const lamdbaUrl =
+  'https://cr5bsi42jxcietfwi5rqlzpiki0mardt.lambda-url.eu-west-1.on.aws/';
 
 export function Upload(props: UploadProps) {
   const [status, setStatus] = useState('idle');
-  const [metadata, setMetadata] = useState<VideoMeta | null>(null);
+  const [metadata, setMetadata] = useState({} as VideoMeta);
 
-  usePostVideoMeta({
+  const { result, error } = usePostVideoMeta({
     url: lamdbaUrl,
-    data: metadata!,
+    data: { meta: metadata },
     status,
   });
 
@@ -24,12 +25,14 @@ export function Upload(props: UploadProps) {
     setStatus(status);
   };
 
-  const handleMetaData = (metadata: VideoMeta) => {
+  const handleMetaData = (metadata: any) => {
     setMetadata(metadata);
   };
   return (
     <div className="flex flex-col">
       <div className="mb-8 font-mono">Status: {status}</div>
+      {error && <div className="mb-8 font-mono">Error: {error.message}</div>}
+      {result && <div className="mb-8 font-mono">Result: ${result}</div>}
       <DropzoneS3Uploader
         handleMetadata={handleMetaData}
         handleChangeStatus={handleChangeStatus}
