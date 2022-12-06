@@ -1,8 +1,7 @@
+import { useState } from 'react';
 import { DropzoneS3Uploader } from '@onvu/shared/ui';
 import { usePostVideoMeta } from '@onvu/shared/hooks';
-import { useState } from 'react';
 import { VideoMeta } from '@onvu/shared/types';
-import 'shaka-player/dist/controls.css';
 
 /* eslint-disable-next-line */
 export interface UploadProps {}
