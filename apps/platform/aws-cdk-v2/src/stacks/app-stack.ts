@@ -64,6 +64,7 @@ export class AppStack extends Stack {
       pointInTimeRecovery: context?.ddbPITRecovery,
     });
 
+    // Lambda api endpoints
     const saveVideoMetadata = new NodejsFunction(this, 'SaveVideoMetadata', {
       ...lambdaConfig,
       environment: {
@@ -71,6 +72,15 @@ export class AppStack extends Stack {
         ALLOWED_ORIGIN: '*',
       },
       entry: join(__dirname, '../../../../functions/save-video-metadata.ts'),
+    });
+
+    const getAllVideos = new NodejsFunction(this, 'get-all-videos.ts', {
+      ...lambdaConfig,
+      environment: {
+        VIDEO_TABLE_NAME: videosTable.tableName,
+        ALLOWED_ORIGIN: '*',
+      },
+      entry: join(__dirname, '../../../../functions/get-all-videos.ts'),
     });
 
     // create video transcoding sns topic
@@ -101,7 +111,6 @@ export class AppStack extends Stack {
       bucketName: `${context?.appName}-${context?.environment}-video-thumbnail-bucket`,
     });
 
-    // Lambda function in charge of creating the PreSigned URL
     const getS3SignedUrlLambda = new NodejsFunction(
       this,
       'GetS3SignedUrlLambda',
@@ -130,6 +139,10 @@ export class AppStack extends Stack {
       authType: lambda.FunctionUrlAuthType.NONE,
     });
 
+    const getAllVideosUrl = getAllVideos.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+    });
+
     videoInputBucket.addToResourcePolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
@@ -150,6 +163,7 @@ export class AppStack extends Stack {
 
     // grant dynamodb permissions to lambda
     videosTable.grantReadWriteData(saveVideoMetadata);
+    videosTable.grantReadData(getAllVideos);
 
     // videoInputBucket.grantPut(getS3SignedUrlLambda);
     videoInputBucket.grantPublicAccess();
@@ -180,12 +194,20 @@ export class AppStack extends Stack {
       value: saveVideoMetadata.functionArn,
     });
 
+    new CfnOutput(this, 'get-all-videos-arn', {
+      value: getAllVideos.functionArn,
+    });
+
     new CfnOutput(this, 'get-s3-signed-url-lambda-arn', {
       value: getS3SignedUrlLambda.functionArn,
     });
 
     new CfnOutput(this, 'signed-s3-url', {
       value: preSignedS3Url.url,
+    });
+
+    new CfnOutput(this, 'get-all-videos-url', {
+      value: getAllVideosUrl.url,
     });
 
     new CfnOutput(this, 'save-video-metadata-url', {

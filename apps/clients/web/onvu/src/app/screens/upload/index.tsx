@@ -9,7 +9,7 @@ export interface UploadProps {}
 const bucketUrl =
   'https://platform-aws-cdk-v2-dev-video-input-bucket.s3.eu-west-1.amazonaws.com/';
 const lamdbaUrl =
-  'https://cr5bsi42jxcietfwi5rqlzpiki0mardt.lambda-url.eu-west-1.on.aws/';
+  ' https://gs3tknkm3ncst2exc7x7ojpyzi0rdwop.lambda-url.eu-west-1.on.aws/';
 
 export function Upload(props: UploadProps) {
   const [status, setStatus] = useState('idle');

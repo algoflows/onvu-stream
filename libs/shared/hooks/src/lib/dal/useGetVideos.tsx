@@ -22,12 +22,23 @@ export function useGetVideos(props: UseGetVideosProps) {
           }, 1500);
         }
         if (url) {
-          const response = await fetch(url);
-          const json = await response.json();
-          setVideos(json);
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          console.log(response);
+          const result = await response.json();
+          console.log('result', result);
+          console.log('Items', result.Items);
+          setVideos(videos);
+          setLoading(false);
         }
       } catch (error) {
         if (error) setError(error);
+        console.log(error);
         setLoading(false);
       }
     };

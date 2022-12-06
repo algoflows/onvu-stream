@@ -29,6 +29,9 @@ export interface VideoMeta {
   videoWidth?: number;
   videoHeight?: number;
   fileUrl?: string;
+  thumbnailUrl?: string;
+  fullFrameUrl?: string;
+  mpdPlaylistUrl?: string;
 }
 
 // export interface Channel {

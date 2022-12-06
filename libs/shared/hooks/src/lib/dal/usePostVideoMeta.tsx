@@ -22,7 +22,6 @@ export function usePostVideoMeta(props: UsePostVideoMetaProps) {
       console.log('props.status', props.status);
       const postVideoMeta = async () => {
         try {
-          // axios post request
           const response = await fetch(url, {
             mode: 'no-cors',
             method: 'POST',
@@ -31,10 +30,10 @@ export function usePostVideoMeta(props: UsePostVideoMetaProps) {
             },
             body: JSON.stringify(meta),
           });
-          const { result } = await response.json();
+          console.log(response);
+          const result = await response.json();
           console.log('result', result);
-          // setResult(result);
-
+          setResult(result);
           setLoading(false);
         } catch (e) {
           if (e instanceof Error) {
