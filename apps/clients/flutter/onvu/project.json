@@ -1,0 +1,142 @@
+{
+  "name": "clients-flutter-onvu",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/clients/flutter/onvu/src",
+  "projectType": "application",
+  "targets": {
+    "analyze": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter analyze",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter clean",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter format apps/clients/flutter/onvu/*",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter test",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "doctor": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter doctor",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "assemble": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter assemble",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "attach": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter attach",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "drive": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter drive",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "gen-l10n": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter gen-l10n",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter install",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter run",
+        "cwd": "apps/clients/flutter/onvu"
+      }
+    },
+    "build-aar": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter build aar",
+        "cwd": "apps/clients/flutter/onvu"
+      },
+      "outputs": ["{workspaceRoot}/apps/clients/flutter/onvu/build"]
+    },
+    "build-apk": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter build apk",
+        "cwd": "apps/clients/flutter/onvu"
+      },
+      "outputs": ["{workspaceRoot}/apps/clients/flutter/onvu/build"]
+    },
+    "build-appbundle": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter build appbundle",
+        "cwd": "apps/clients/flutter/onvu"
+      },
+      "outputs": ["{workspaceRoot}/apps/clients/flutter/onvu/build"]
+    },
+    "build-bundle": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter build bundle",
+        "cwd": "apps/clients/flutter/onvu"
+      },
+      "outputs": ["{workspaceRoot}/apps/clients/flutter/onvu/build"]
+    },
+    "build-ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter build ios",
+        "cwd": "apps/clients/flutter/onvu"
+      },
+      "outputs": ["{workspaceRoot}/apps/clients/flutter/onvu/build"]
+    },
+    "build-ios-framework": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter build ios-framework",
+        "cwd": "apps/clients/flutter/onvu"
+      },
+      "outputs": ["{workspaceRoot}/apps/clients/flutter/onvu/build"]
+    },
+    "build-ipa": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "flutter build ipa",
+        "cwd": "apps/clients/flutter/onvu"
+      },
+      "outputs": ["{workspaceRoot}/apps/clients/flutter/onvu/build"]
+    }
+  },
+  "tags": []
+}
